@@ -3,7 +3,7 @@
 class Router
 {
 
-    private $controller = 'App\Controller\EquipController';
+    private $controller = 'App\Controller\HomeController';
     private $method = 'index';
     private $params = [];
 
@@ -26,7 +26,7 @@ class Router
             if (class_exists($controller)) {
                 $this->controller = $controller;
             } else {
-                echo "error not fined";
+                include '../app/View/errors/404.php';
                 exit;
             }
         }
@@ -39,11 +39,12 @@ class Router
 
             $method = $uri[1];
             unset($uri[1]);
-
+            
             if (method_exists($class, $method)) {
                 $this->method = $method;
             } else {
-                echo "error not fined";
+                include '../app/View/errors/404.php';
+                // echo "error not fined";
                 exit;
             }
         }
