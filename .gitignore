@@ -1,2 +1,7 @@
 composer.lock
+.env
+.env.example
 /vendor
+/node_modules
+/public/asset/vendor
+/app/logs
