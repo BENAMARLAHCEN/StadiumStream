@@ -1,11 +1,13 @@
 <?php
 require_once '../vendor/autoload.php'; // Include Composer autoloader
+
 use Dotenv\Dotenv;
 // Load environment variables from .env file
 $dotenv = Dotenv::createImmutable(__DIR__.'/../');
 $dotenv->load();
 // Application
-define('APP_URL', 'http://localhost/STADIUMSTREAM/public/');
+define('APP_URL', 'http://localhost/documentation/StadiumStream/');
+define('LOG_URL', 'C:\laragon\www\documentation\StadiumStream\app');
 
 // Database
 define('DB_HOST', $_ENV['DB_HOST']);

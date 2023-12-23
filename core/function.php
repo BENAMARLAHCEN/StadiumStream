@@ -2,17 +2,11 @@
 
 //   dispatch view
 
- function view($view, $data = [])
- {
-     extract($data);
- 
-     require "../app/view/layouts/main.php";
+ function url($url = ''){
+    return APP_URL . trim($url, '/');
  }
 
-
- function adminView($view, $data = [])
- {
-     extract($data);
- 
-     require "../app/view/layouts/dashboard.php";
- }
+ function asset($path = '')
+{
+    return APP_URL . trim($path, '/');
+}

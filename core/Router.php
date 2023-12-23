@@ -32,7 +32,7 @@ class Router
         }
 
         $class = $this->controller;
-        $class = new $class;
+        $objetController = new $class;
 
 
         if (isset($uri[1])) {
@@ -40,7 +40,7 @@ class Router
             $method = $uri[1];
             unset($uri[1]);
             
-            if (method_exists($class, $method)) {
+            if (method_exists($objetController, $method)) {
                 $this->method = $method;
             } else {
                 include '../app/View/errors/404.php';
@@ -49,11 +49,13 @@ class Router
             }
         }
 
-
+        
         if (isset($uri[2])) {
             $this->params = array_values($uri);
+            // var_dump($this->params);
+            // exit;
         }
 
-        call_user_func_array([$class, $this->method], $this->params);
+        call_user_func_array([$objetController, $this->method], $this->params);
     }
 }
