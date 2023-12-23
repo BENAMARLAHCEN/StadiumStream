@@ -2,10 +2,10 @@
 
 namespace App\Controller;
 
-class HomeController
+class HomeController extends Controller
 {
     public function index()
     {
-        view('home');
+        $this->view('home');
     }
 }

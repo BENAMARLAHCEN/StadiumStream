@@ -5,7 +5,7 @@
     <!-- Navbar brand -->
     <a class="navbar-brand me-2" href="<?=url('/')?>">
       <img
-        src="./asset/img/StadiumStream.png"
+        src="<?= asset('asset/img/StadiumStream.png')?>"
         height="30"
         alt="MDB Logo"
         loading="lazy"
@@ -34,7 +34,7 @@
           <a class="nav-link" href="<?=url('/')?>">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="<?=url('Equip')?>">Equip</a>
+          <a class="nav-link" href="<?=url('Team')?>">Team</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="<?=url('/')?>">Home</a>
