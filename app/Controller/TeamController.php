@@ -10,7 +10,7 @@ class TeamController extends Controller
     {
         $teams = new Team;
         $team = $teams->selectAllTeam();
-        $this->adminView('TeamList',$team);
+        $this->adminView('TeamList', $team);
     }
     public function Add()
     {
@@ -21,15 +21,26 @@ class TeamController extends Controller
     {
         $teams = new Team;
         $team = $teams->selectTeam($id);
-        $this->adminView('EditTeam',$team[0]);
+        $this->adminView('EditTeam', $team[0]);
     }
 
     public function AddTeam()
     {
         $newTeam = new Team;
-        // var_dump($_FILES['logo']);
-        if ($newTeam->addTeam($_POST)) {
-            // header('location:../Team');
+        
+        $logo = $_FILES['logo']['name'];
+        $logo_tmp_name = $_FILES['logo']['tmp_name'];
+        $logo_folder = __DIR__."\\..\\..\\public\\asset\\uploads\\" . $logo;
+        unset($_POST['logo']);
+        $_POST['logo'] = $logo;
+        if (empty($logo)) {
+            echo "image that you have entered is note exist!";
+        } else if ($newTeam->addTeam($_POST)) {
+
+            if (move_uploaded_file($logo_tmp_name, $logo_folder)) {
+                header('location:../Team');
+            }
+            
         } else {
             header('location:Add');
         }
@@ -49,7 +60,7 @@ class TeamController extends Controller
         $newTeam = new Team;
         $id = $_POST['id'];
         unset($_POST['id']);
-        if ($newTeam->UpdateTeam($_POST,$id)) {
+        if ($newTeam->UpdateTeam($_POST, $id)) {
             header('location:../Team');
         } else {
             header('location:errors');
