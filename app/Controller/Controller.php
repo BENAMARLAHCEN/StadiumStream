@@ -12,6 +12,12 @@ abstract class Controller{
     {
         include "../app/view/layouts/main.php";
     }
+
+    protected function ClientView($view,$data = [])
+    {
+        include "../app/view/client/$view.php";
+    }
+
    
     protected function adminView($view,$data = [])
     {

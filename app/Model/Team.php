@@ -2,6 +2,8 @@
 namespace App\Model;
 
 class Team extends Crud{
+
+    private int $id;
     public function __construct()
     {
         parent::__construct();
